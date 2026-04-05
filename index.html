@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Yurii Hohol — Web Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08080f;--surface:#0f0f1a;--card:#13131f;
+  --accent:#4f8eff;--accent2:#a259ff;--green:#36d399;
+  --text:#e8eaf6;--muted:#6b7280;--border:#1e1e2e;
+  --max-w:1100px;
+  --font-head:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6;overflow-x:hidden}
+
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.4}
+.glow-1{position:fixed;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(79,142,255,.12) 0%,transparent 70%);top:-200px;left:-200px;pointer-events:none;z-index:0}
+.glow-2{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(162,89,255,.1) 0%,transparent 70%);bottom:-100px;right:-100px;pointer-events:none;z-index:0}
+
+/* ── ГОЛОВНИЙ КОНТЕЙНЕР — всі секції через нього ── */
+.container{
+  width:100%;
+  max-width:var(--max-w);
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:40px;
+  padding-right:40px;
+}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);background:rgba(8,8,15,.7);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:20px 40px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:var(--font-head);font-weight:800;font-size:1.2rem;letter-spacing:-.02em;color:var(--text)}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--accent);color:#fff;padding:8px 20px;border-radius:8px;text-decoration:none;font-size:.875rem;font-weight:600;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* SECTIONS */
+section{padding:100px 0;position:relative;z-index:1}
+.section-label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:12px}
+.section-title{font-family:var(--font-head);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;letter-spacing:-.02em;margin-bottom:48px;color:var(--text)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:80px;padding-bottom:40px}
+.hero-inner{max-width:780px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(54,211,153,.1);border:1px solid rgba(54,211,153,.25);color:var(--green);padding:6px 16px;border-radius:100px;font-size:.8rem;font-weight:600;letter-spacing:.05em;margin-bottom:28px}
+.hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+h1{font-family:var(--font-head);font-size:clamp(2.8rem,6vw,4.8rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:24px}
+h1 .line2{color:transparent;-webkit-text-stroke:1px rgba(232,234,246,.3)}
+h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{font-size:1.1rem;color:var(--muted);max-width:520px;margin-bottom:40px;line-height:1.7;font-weight:300}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:14px 32px;border-radius:10px;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .2s,box-shadow .2s;box-shadow:0 0 30px rgba(79,142,255,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(79,142,255,.5)}
+.btn-secondary{border:1px solid var(--border);color:var(--text);padding:14px 32px;border-radius:10px;text-decoration:none;font-weight:500;font-size:.95rem;transition:border-color .2s,background .2s}
+.btn-secondary:hover{border-color:var(--accent);background:rgba(79,142,255,.06)}
+.hero-stack{margin-top:64px;display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+.hero-stack span{font-size:.75rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.tag{background:var(--card);border:1px solid var(--border);padding:6px 14px;border-radius:6px;font-size:.8rem;color:var(--muted);font-weight:500}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:16px;font-weight:300}
+.about-text p strong{color:var(--text);font-weight:500}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.stat{background:var(--card);border:1px solid var(--border);padding:28px;border-radius:12px}
+.stat-num{font-family:var(--font-head);font-size:2.5rem;font-weight:800;color:var(--accent);line-height:1}
+.stat-label{font-size:.85rem;color:var(--muted);margin-top:6px}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.skill-card{background:var(--card);border:1px solid var(--border);padding:28px;border-radius:14px;transition:border-color .2s,transform .2s}
+.skill-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.skill-icon{font-size:2rem;margin-bottom:16px}
+.skill-name{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:8px}
+.skill-desc{font-size:.85rem;color:var(--muted);line-height:1.6}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.skill-tag{background:rgba(79,142,255,.08);border:1px solid rgba(79,142,255,.2);color:var(--accent);padding:3px 10px;border-radius:4px;font-size:.72rem;font-weight:600}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s,transform .2s}
+.project-card:hover{border-color:var(--accent);transform:translateY(-6px)}
+.project-preview{height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.p1{background:linear-gradient(135deg,#0d1b3e,#1a3a6b)}
+.p2{background:linear-gradient(135deg,#1a0d3e,#3a1a6b)}
+.p3{background:linear-gradient(135deg,#0d3e1b,#1a6b3a)}
+.p4{background:linear-gradient(135deg,#3e1a0d,#6b3a1a)}
+.p5{background:linear-gradient(135deg,#0d3e3e,#1a6b6b)}
+.project-preview::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,var(--card))}
+.project-body{padding:24px}
+.project-type{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px}
+.project-name{font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.project-desc{font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.project-techs{display:flex;flex-wrap:wrap;gap:6px}
+.project-tech{background:var(--surface);padding:3px 10px;border-radius:4px;font-size:.72rem;color:var(--muted);font-weight:500}
+
+/* CONTACT */
+.contact-wrap{display:flex;justify-content:center}
+.contact-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:60px;width:100%;max-width:680px;text-align:center}
+.contact-box h3{font-family:var(--font-head);font-size:2rem;font-weight:700;margin-bottom:16px}
+.contact-box p{color:var(--muted);margin-bottom:40px;font-size:1.05rem}
+.contact-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.contact-link{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);padding:12px 24px;border-radius:10px;text-decoration:none;color:var(--text);font-size:.9rem;font-weight:500;transition:border-color .2s,background .2s}
+.contact-link:hover{border-color:var(--accent);background:rgba(79,142,255,.06)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);position:relative;z-index:1}
+.footer-inner{max-width:var(--max-w);margin:0 auto;padding:32px 40px;display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:.8rem;color:var(--muted)}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .container{padding-left:20px;padding-right:20px}
+  .nav-inner{padding:16px 20px}
+  .nav-links{display:none}
+  section{padding:70px 0}
+  .contact-box{padding:36px 20px}
+  .footer-inner{flex-direction:column;gap:8px;text-align:center;padding:24px 20px}
+}
+.main-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5; /* Щоб воно було поверх тексту */
+}
+</style>
+</head>
+<body>
+<div class="glow-1"></div>
+<div class="glow-2"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Y<span>.</span>Hohol</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Hire Me</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-badge">Available for freelance work</div>
+      <h1>I build <em>fast</em>,<br><span class="line2">modern websites</span><br>that convert.</h1>
+      <p class="hero-desc">Freelance web developer based in Belgium. I craft responsive websites, React apps, and Python automation tools for clients worldwide.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-secondary">Get In Touch</a>
+      </div>
+      <div class="hero-stack">
+        <span>Built with</span>
+        <span class="tag">HTML/CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">React</span>
+        <span class="tag">Python</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-label">Who I Am</div>
+    <div class="section-title">About Me</div>
+    <div class="about-grid fade-up">
+      <div class="about-text">
+        <p>I'm a <strong>freelance web developer</strong> based in Belgium with a passion for building clean, fast, and user-friendly digital experiences.</p>
+        <p>I specialize in <strong>frontend development</strong> with HTML, CSS, and JavaScript — and build dynamic applications using <strong>React.js</strong>. On the backend side, I use <strong>Python</strong> for automation, scripting, and data processing.</p>
+        <p>My goal is simple: deliver high-quality work that helps clients grow their businesses online — on time, on budget, and without the headaches.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Projects Completed</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-label">Core Technologies</div></div>
+        <div class="stat"><div class="stat-num">EU</div><div class="stat-label">Timezone (Belgium)</div></div>
+        <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Coffee Consumed</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-label">What I Know</div>
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-card fade-up">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-name">Frontend Development</div>
+        <div class="skill-desc">Pixel-perfect, responsive interfaces built with modern HTML5 and CSS3 — Flexbox, Grid, animations.</div>
+        <div class="skill-tags"><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">Responsive</span></div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon">⚡</div>
+        <div class="skill-name">JavaScript & React</div>
+        <div class="skill-desc">Dynamic UIs and SPAs with ES6+, React Hooks, and REST API integration.</div>
+        <div class="skill-tags"><span class="skill-tag">ES6+</span><span class="skill-tag">React.js</span><span class="skill-tag">REST API</span></div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-name">Python Automation</div>
+        <div class="skill-desc">Scripting, web scraping, data parsing and processing to automate repetitive tasks.</div>
+        <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">Scraping</span><span class="skill-tag">Pandas</span></div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon">🛠️</div>
+        <div class="skill-name">Dev Tools</div>
+        <div class="skill-desc">Professional workflow with Git, GitHub, VS Code, and Figma for design handoffs.</div>
+        <div class="skill-tags"><span class="skill-tag">Git</span><span class="skill-tag">GitHub</span><span class="skill-tag">VS Code</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-label">My Work</div>
+    <div class="section-title">Projects</div>
+    <div class="projects-grid">
+      <div class="project-card fade-up">
+           <a href="https://yurii21h.github.io/portfolio/" target="_blank" class="main-link"></a>
+        <div class="project-preview p1">🌐</div>
+        <div class="project-body">
+          <div class="project-type">HTML · CSS · JS</div>
+          <div class="project-name">Portfolio Website</div>
+          <div class="project-desc">This very portfolio — responsive, animated, dark-themed developer site.</div>
+          <div class="project-techs"><span class="project-tech">HTML5</span><span class="project-tech">CSS3</span><span class="project-tech">JavaScript</span></div>
+        </div>
+      </div>
+      <div class="project-card fade-up">
+           <a href="https://yurii21h.github.io/task-manager/  " target="_blank" class="main-link"></a>
+        <div class="project-preview p2">✅</div>
+        <div class="project-body">
+          <div class="project-type">React App</div>
+          <div class="project-name">Task Manager App</div>
+          <div class="project-desc">CRUD task manager with filtering, priority levels, and localStorage persistence.</div>
+          <div class="project-techs"><span class="project-tech">React</span><span class="project-tech">Hooks</span><span class="project-tech">CSS Modules</span></div>
+        </div>
+      </div>
+      <div class="project-card fade-up">
+           <a href="https://github.com/Yurii21H/Scraper" target="_blank" class="main-link"></a>
+        <div class="project-preview p3">🐍</div>
+        <div class="project-body">
+          <div class="project-type">Python</div>
+          <div class="project-name">Web Scraper Tool</div>
+          <div class="project-desc">Automated data collector that scrapes, parses, and exports structured data to CSV.</div>
+          <div class="project-techs"><span class="project-tech">Python</span><span class="project-tech">BeautifulSoup</span><span class="project-tech">Pandas</span></div>
+        </div>
+      </div>
+       <div class="project-card fade-up">
+     <a href=" https://yurii21h.github.io/weather-app/" target="_blank" class="main-link"></a>
+        <div class="project-preview p4">🌤️</div>
+        <div class="project-body">
+          <div class="project-type">React · API</div>
+          <div class="project-name">Weather App</div>
+          <div class="project-desc">Real-time weather dashboard using OpenWeatherMap API with city search.</div>
+          <div class="project-techs"><span class="project-tech">React</span><span class="project-tech">API</span><span class="project-tech">Axios</span></div>
+        </div>
+      </div>
+      <div class="project-card fade-up">
+         <a href=" https://yurii21h.github.io/business-landing/" target="_blank" class="main-link"></a>
+        <div class="project-preview p5">🏢</div>
+        <div class="project-body">
+          <div class="project-type">HTML · CSS · JS</div>
+          <div class="project-name">Business Landing Page</div>
+          <div class="project-desc">Conversion-focused landing page for a fictional agency with smooth animations.</div>
+          <div class="project-techs"><span class="project-tech">HTML5</span><span class="project-tech">CSS3</span><span class="project-tech">JavaScript</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Let's Talk</div>
+    <div class="contact-wrap">
+      <div class="contact-box fade-up">
+        <h3>Ready to build something great?</h3>
+        <p>I'm available for freelance projects. Let's discuss your idea and make it happen.</p>
+        <div class="contact-links">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=myworkspaceyurii@gmail.com" target="_blank" class="contact-link">📧 Gmail</a>
+          <a href="https://github.com/Yurii21H/Yurii21H" target="_blank" class="contact-link">🐙 GitHub</a>
+          <a href="https://upwork.com" target="_blank" class="contact-link">💼 Upwork</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2025 Yurii Hohol. All rights reserved.</p>
+    <p>Designed & built with ❤️ in Belgium</p>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
